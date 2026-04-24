@@ -19,7 +19,9 @@ To compile and run this program for the <b>first time</b> you must do the follow
 
 4. Install Flask with ‘pip install Flask’ 
 
-5. Run the application by typing 'python3 app.py' and paste this web page in your web browser: http://127.0.0.1:5000 
+5. Run schema.py by typing 'python3 schema.py'
+
+6. Run the application by typing 'python3 app.py' and paste this web page in your web browser: http://127.0.0.1:5000 
 
 After <b>successfully running the program once</b>, you can use it any other time by: 
 
