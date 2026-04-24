@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="../../static/css/notes.css">
+</head>
+<body>
+    {% include "header.html" %}
+    <h1>Notes Taking</h1>
+    <br>
+    <form method="post">
+        <textarea name="writing">{{body}}</textarea>
+        <div class="btn">
+            <input type="submit" value="Save Notes">
+        </div>
+    </form>
+    
+</body>
+</html>

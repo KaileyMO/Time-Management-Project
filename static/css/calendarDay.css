@@ -1,0 +1,74 @@
+body {
+    background-color: rgb(191, 213, 234);
+}
+
+h1 {
+    text-align: center;
+    padding-top:30px;
+}
+
+h2 {
+    text-align: center;
+    padding-bottom:15px;
+}
+
+button {
+    padding:8px;
+    padding-left:20px;
+    padding-right:18px;
+    border-radius:20px;
+    font-size:26px;
+    position:fixed;
+}
+
+input {
+    padding:14px;
+}
+
+select {
+    padding:15px;
+    font-size: 20px;
+}
+
+.list_hours {
+    margin:auto;
+    padding-left:15%;
+    padding-right:15%;
+}
+
+.hour_block {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+    margin: auto;
+    font-size: 20px;
+    padding: 15px;
+    border-style: solid;
+    background-color: rgb(160, 160, 160);
+}
+
+.temp {
+    text-align: center;
+    margin:auto;
+    font-size: 25px;
+}
+
+.event_handling {
+    display:flex;
+    flex-wrap:wrap;
+    align-items:center;
+    padding:10px;
+}
+
+.event_handling div {
+    flex-wrap:wrap;
+    border:1px solid black;
+    text-align: center;
+    padding:5px;
+    background-color: rgb(211, 217, 223);
+}
+
+.events_added {
+    float:right;
+}

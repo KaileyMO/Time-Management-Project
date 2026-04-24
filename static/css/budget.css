@@ -1,0 +1,57 @@
+body {
+    background-color:rgb(166, 205, 163);
+}
+
+h1 {
+    text-align:center;
+}
+
+.categories input {
+    font-size:25px;
+    gap:5px;
+}
+
+.categories button {
+    font-size:20px;
+    margin-top:26px;
+    float:right;
+}
+
+.categories {
+    margin: auto;
+    width: fit-content;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(123, 188, 174);
+}
+
+.btn {
+    margin:auto;
+    position:fixed;
+    left:14%;
+    top:25%;
+}
+
+.btn input {
+    font-size: 35px;
+}
+
+.bundle {
+    margin:auto;
+    position:fixed;
+    font-size:35px;
+    font-weight: bold;
+    top:40%;
+    right:17%;
+}
+
+.bt {
+    margin:auto;
+    width:fit-content;
+    right:20%;
+}
+
+.bt button {
+    font-size: 25px;
+}

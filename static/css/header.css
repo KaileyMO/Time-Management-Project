@@ -1,0 +1,17 @@
+.head {
+    opacity:0.85;
+    position:sticky;
+    top:0;
+    text-align:center;
+    padding:15px;
+    background-color: rgb(79, 79, 79);
+}
+
+.head a {
+    padding:10px;
+    padding-left:5%;
+    padding-right:5%;
+    font-size: 20px;
+    text-decoration:inherit;
+    color:rgb(224, 224, 224);
+}

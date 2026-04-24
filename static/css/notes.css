@@ -1,0 +1,35 @@
+body {
+    background-color: rgb(241, 169, 133);
+}
+
+h1 {
+    text-align: center;
+}
+
+textarea {
+    display:flex;
+    justify-content: center;
+    align-items:center;
+    margin:auto;
+    width:800px;
+    height:650px;
+    resize:none;
+    font-size: 20px;
+    padding:10px;
+}
+
+.btn {
+    margin:auto;
+    font-size: 30px;
+    position:fixed;
+    left:4%;
+    top:25%;
+}
+
+.btn input {
+    font-size:35px;
+}
+
+.full_text {
+    background-color: yellow;
+}

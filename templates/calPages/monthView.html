@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="../../static/css/calendar.css">
+</head>
+<body>
+    {% include "header.html" %}
+    <h1>Calendar for {{ year }}</h1>
+    {% set ns = namespace(three_max=0)%}
+    {% for i in range(0,12) %}
+        <div class="month" id="month_{{i + 1}}">
+            <div class="month_name">{{ months[i].name }} {{ year }} </div>
+            {% for day_name in DAYS %}
+                <div class="day_name">{{ day_name }}</div>
+            {% endfor %}
+
+            {% for week in months[i].weeks %}
+                {% for day in week %}
+                    {% if i + 1 == curr_month and day == curr_day %}
+                        <div class="day_curr">
+                            <a href="{{i + 1}}/{{day}}/{{year}}">{{ day }}</a>
+                            {% for event in all_events %}
+                                {% if (ns.three_max < 3) and (event[4] == '' ~ (i + 1) ~ '-' ~ day ~ '-' ~ year) %}
+                                    <span class="dot"></span>
+                                    {% set ns.three_max = ns.three_max + 1 %}
+                                {%endif%}
+                            {%endfor%}
+                            {% set ns.three_max = 0 %}
+                        </div>
+                    {% elif day > 0 %}
+                        <div class="day">
+                            <a href="{{i + 1}}/{{day}}/{{year}}">{{ day }}</a>
+                            
+                            {% for event in all_events %}
+                                {% if (ns.three_max < 3) and (event[4] == '' ~ (i + 1) ~ '-' ~ day ~ '-' ~ year) %}
+                                    <span class="dot"></span>
+                                    {% set ns.three_max = ns.three_max + 1 %}
+                                {%endif%}
+                            {%endfor%}
+                            {% set ns.three_max = 0 %}
+                        </div>
+                    {% else %}
+                        <div class="day_none"></div>
+                    {% endif %}
+                {% endfor %}
+            {% endfor %}
+        </div>
+    {%endfor%}
+
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        document.getElementById("month_{{curr_month}}").scrollIntoView({behavior:"auto"});
+    });
+    </script>
+
+</body>
+</html>

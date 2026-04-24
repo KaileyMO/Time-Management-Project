@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="../../static/css/budget.css">
+</head>
+<body>
+    {% include "header.html" %}
+    <h1>Budgeting</h1>
+
+    {% set ns = namespace(count_cat=0) %}
+
+    <form method="post">
+        <div class="categories" id="categories">
+        {% for cate in range(0,cat_len) %}
+            {% set cat = category[cate]%}
+                <div id="button_deletion-{{ ns.count_cat }}">
+                    <button type="button" id="delete_id-{{ ns.count_cat }}" onclick="deleteCategory({{ns.count_cat}})">Delete</button>
+                </div>
+                <input type="text" id="name_id-{{ ns.count_cat }}" name="cat-{{ ns.count_cat }}" value="{{ cat[1] }}" class="variable">
+                <input type="number" step="any" id="price_id-{{ ns.count_cat }}" name="price-{{ ns.count_cat }}" value="{{ cat[2] }}" class="price_class">
+                {% set ns.count_cat = ns.count_cat + 1 %}
+        {%endfor%}
+        </div>
+
+        <div class="btn">
+            <input type="submit" value="Save Budget">
+        </div>
+    </form>
+
+    <div class="bt">
+        <button type="button" onclick="addCategory()">Add New Item</button>
+    </div>
+    <div class="bundle">
+        Total: <div class="total" id="total" value="">0.00</div>
+    </div>
+
+    <script>
+        var count = {{cat_len}};
+        function addCategory() {
+            var curr = count;
+            var input = document.createElement("div");
+            input.setAttribute('id', `button_deletion-${curr}`);
+            var parent = document.getElementById("categories");
+            parent.appendChild(input);
+
+            input = document.createElement("button");
+            input.setAttribute('type', 'button');
+            input.setAttribute('id', `delete_id-${curr}`);
+            input.setAttribute('onclick', `deleteCategory(${curr})`);
+            parent = document.getElementById(`button_deletion-${curr}`);
+            parent.appendChild(input);
+
+            text_delete = document.createTextNode("Delete");
+            parent = document.getElementById(`delete_id-${curr}`);
+            parent.appendChild(text_delete);
+
+            input = document.createElement("input");
+            input.setAttribute('type', 'text');
+            input.setAttribute('id', `name_id-${curr}`);
+            input.setAttribute('name', `cat-${curr}`)
+            input.setAttribute('value', '');
+            input.setAttribute('class', 'variable')
+            input.setAttribute('placeholder', 'Enter item...')
+            parent = document.getElementById("categories");
+            parent.appendChild(input);
+
+            input = document.createElement("input");
+            input.setAttribute('type', 'number');
+            input.setAttribute('step', 'any');
+            input.setAttribute('id', `price_id-${curr}`);
+            input.setAttribute('name', `price-${curr}`)
+            input.setAttribute('value', '0');
+            input.setAttribute('class', 'price_class')
+            parent = document.getElementById("categories");
+            parent.appendChild(input);
+
+            count++;
+        }
+
+        function deleteCategory(newCount) {
+            var hide_name = document.getElementById(`name_id-${newCount}`);
+            hide_name.type = 'hidden';
+
+            var hide_price = document.getElementById(`price_id-${newCount}`);
+            hide_price.type = 'hidden';
+
+            hide_price.name = 'hidden';
+
+            var delete_button = document.getElementById(`button_deletion-${newCount}`);
+            delete_button.parentNode.removeChild(delete_button);
+        }
+
+        var total = 0;
+        var prices = document.getElementsByClassName("price_class");
+        for (let i = 0; i < prices.length; i++) {
+            if (prices[i].name != "hidden") {
+                total += parseFloat(prices[i].value);
+            }
+        }
+
+        document.getElementById("total").innerText = total.toFixed(2);
+
+    </script>
+
+</body>
+</html>

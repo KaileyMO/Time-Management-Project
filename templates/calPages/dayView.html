@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="../../static/css/calendarDay.css">
+</head>
+<body>
+    <h1>Day View</h1>
+    <h2>{{month}}-{{day}}-{{year}}</h2>
+    <br><br><br>
+    <form method="post">
+        <div class="events_added">
+            <h2>Add an Event:</h2>
+            <input type="text" name="title" required>
+            <br><br>
+            <select id="time" name="time">
+                {% for hour in HOURS %}
+                    <option value="{{hour}}">{{ hour }}</option>
+                {%endfor%}
+            </select>
+            <select id="twilight" name="twilight">
+                <option value="AM">AM</option>
+                <option value="PM">PM</option>
+            </select>
+            <br><br>
+            <input type="submit" value="Add Event">
+        </div>
+    </form>
+    <button onclick="location.href='/'">Month View</button>
+    <div class="list_hours">
+        {% for i in range(0,2) %}
+            {% for hour in HOURS %}
+                <div class="hour_block">
+                    {{ hour }} {% if i == 0 %}AM{%else%}PM{%endif%}
+                    {% for event in display %}
+                        {% if event[2] == hour and ((event[3] == "AM" and i == 0) or (event[3] == "PM" and i != 0)) %}
+                            <div class="event_handling" onsubmit="return confirm('Delete this event?')"><form method="post">
+                                <input type="hidden" name="action" value="delete">
+                                <input type="hidden" name="event_id" value="{{event[0]}}">
+                                <div>{{event[1]}}
+                                <input type="submit" value="Delete"></div></form>
+                            </div>
+                        {%endif%}
+                    {%endfor%}
+                </div>
+            {%endfor%}
+        {%endfor%}
+    </div>
+
+</body>
+</html>
